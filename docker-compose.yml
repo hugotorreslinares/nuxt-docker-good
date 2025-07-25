@@ -1,0 +1,13 @@
+# Remove version as it's obsolete according to the warning
+services:
+  app:
+    # Use a simpler configuration for development
+    image: node:20-alpine
+    working_dir: /app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    command: sh -c "npm install && npm run dev"

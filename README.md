@@ -2,6 +2,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+### Local Development
+
 First, run the development server:
 
 ```bash
@@ -29,8 +31,59 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Docker Setup
+
+This project includes Docker configuration for local development and production builds.
+
+### Running with Docker Compose (Development)
+
+```bash
+# Make sure Docker Desktop is running first
+
+# Build and start the container
+docker-compose up --build
+
+# Run in detached mode
+docker-compose up -d
+
+# Stop the container
+docker-compose down
+```
+
+> **Note:** The docker-compose.yml has been updated to use a simpler configuration for development. It mounts your local directory into the container and installs dependencies at runtime.
+
+### Development with Dockerfile.dev
+
+Alternatively, you can use the development Dockerfile:
+
+```bash
+# Build the development Docker image
+docker build -t nextjs-dev -f Dockerfile.dev .
+
+# Run the development container
+docker run -p 3000:3000 -v $(pwd):/app nextjs-dev
+```
+
+### Building and Running Production Docker Image
+
+```bash
+# Build the production Docker image
+docker build -t nextjs-app .
+
+# Run the production container
+docker run -p 3000:3000 nextjs-app
+```
+
+> **Note:** The production Dockerfile uses Next.js standalone output mode for optimal production deployment.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+### Deployment Steps
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+2. Import your project to Vercel: https://vercel.com/new
+3. Vercel will automatically detect Next.js and use the optimal build settings
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
