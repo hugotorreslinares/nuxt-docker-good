@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Next.js App",
-  description: "Modern layout with Header, Body, Footer and NextAuth Google Authentication",
+  title: "Next.js contentfull test",
+  description: "Contentful NextAuth Google Authentication",
 };
 
 export default function RootLayout({
